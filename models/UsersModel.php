@@ -42,45 +42,6 @@ function registerNewUser($email, $pwdMD5, $name){
     return $rs;
 }
 
-function checkIncData($chData, $res){
-
-    if(! $chData){
-        $res['success'] = false;
-        $res['message'] = 'Fill in all the fields';
-    } 
-
-    return $res;
-}
-
-function checkPwd_1_2($pwd1, $pwd2, $res){
- 
-    if($pwd1 != $pwd2){
-        $res['success'] = false;
-        $res['message'] = 'Passwords don`t match';
-    }
-
-    return $res;
-}
-
-
-/**
- * Проверка параметров регистрации пользователя
- * 
- * @param type $email 
- * @param type $pwd1
- * @param type $pwd2 повтор пароля
- * @return string результат
- */
-function checkRegisterParams($email, $pwd1, $pwd2){
-    $res = null;
-    $res = checkPwd_1_2($pwd1, $pwd2, $res);
-    $res = checkIncData($pwd2, $res);
-    $res = checkIncData($pwd1, $res);
-    $res = checkIncData($email, $res);
-    
-    return $res;
-}
-
 /**
  * Проверка почты(есть ли email в БД)
  * 

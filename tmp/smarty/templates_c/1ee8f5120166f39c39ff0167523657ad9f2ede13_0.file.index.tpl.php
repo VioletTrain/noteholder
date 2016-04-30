@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-25 17:37:47
-  from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local\views\index.tpl" */
+/* Smarty version 3.1.29, created on 2016-04-16 21:08:35
+  from "C:\OpenServer\domains\noteholder-master.local\views\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_571e2bbbd8b3f2_74449457',
+  'unifunc' => 'content_57127fa3819775_49597319',
   'file_dependency' => 
   array (
-    'ee0da0ce970c77a70ac8e4f54b600d0b38074ee1' => 
+    '1ee8f5120166f39c39ff0167523657ad9f2ede13' => 
     array (
-      0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local\\views\\index.tpl',
-      1 => 1461489435,
+      0 => 'C:\\OpenServer\\domains\\noteholder-master.local\\views\\index.tpl',
+      1 => 1460526872,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_571e2bbbd8b3f2_74449457 ($_smarty_tpl) {
+function content_57127fa3819775_49597319 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 

@@ -1,16 +1,17 @@
-function getData(obj_form){
+function GetData(obj_form){
     var hData = {};
     $('input, textarea, select', obj_form).each(function(){
         if(this.name && this.name!=''){
             hData[this.name] = this.value;
         }
     });
+
     return hData;
 }
 
 // регистрация нового пользователя
 function RegisterNewUser(){
-    var postData = getData('.reg_form');
+    var postData = GetData('.reg_form');
     
     $.ajax({
         type:'POST',
@@ -32,7 +33,7 @@ function RegisterNewUser(){
 }
 //авторизация пользователя
 function AuthoriseUser(){
-    var postData = getData('.log_form');
+    var postData = GetData('.log_form');
     
     $.ajax({
         type:'POST',

@@ -1,6 +1,65 @@
+/**
+ * Сбор POST-данных с полей
+ * 
+ * @param {type} obj_form   имя/id/class поля
+ * @returns {unresolved}
+ */
+function GetData(obj_form){
+    var hData = {};
+    $('input, textarea, select', obj_form).each(function(){
+        if(this.name && this.name!=''){
+            hData[this.name] = this.value;
+        }
+    });
+
+    return hData;
+}
+
+//  отправка POST-данных( имя папки ) для добавления новой папки 
+AddNewFolder = function(){
+    var postData = GetData('.new_folder');
+    console.log(postData);
+    $.ajax({
+        type:'POST',
+        async: true,
+        url:"?controller=folder&action=cfolder",
+        data: postData,
+        dataType: 'json',
+        success: function(data){             
+            if(data['success']){
+                console.log('success adding new folder');
+            } else {
+                console.log('failed adding new folder');
+                console.log(data['name']);
+            }
+        }
+ 
+    });
+}
+
+ViewFolders = function(){
+    var postData = GetData('.new_folder');
+    console.log(postData);
+    $.ajax({
+        type:'POST',
+        async: true,
+        url:"?controller=folder&action=vfolders",
+        data: postData,
+        dataType: 'json',
+        success: function(data){             
+            for(var i = 0; i < data.length; i++){
+                f.className = "folder folder_" + data[i]['name'];
+                f.innerHTML = '<img src="/img/icons/folder.png">' + data[i]['name'];
+            }
+        }
+ 
+    });
+}
+
+//  отправка POST-данных для выхода из учетной записи
 LoggingOut = function(){
- 	var postData = true;
- 	
+    var postData = true;
+    
     $.ajax({
         type:'POST',
         async: true,
@@ -9,8 +68,8 @@ LoggingOut = function(){
         dataType: 'json',
         success: function(data){             
         	setTimeout(function(){
-        		window.location.href = "/";
-			}, 500);
+                    window.location.href = "/";
+		}, 500);
         }
  
     });

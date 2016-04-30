@@ -118,6 +118,23 @@ body{
 	transition: $anim;
 }
 
+//CONTEXT
+.context{
+	position: abdolute;
+	width: 100px;
+	height: 100px;
+	
+}
 
-
+//FOLDERBTN
+.folder_btn{
+	position: absolute;
+	left: 500px;
+}
+.create_folder{
+	top: 500px;
+}
+.remove_folder{
+	top: 550px;
+}
 

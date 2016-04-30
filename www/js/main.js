@@ -28,6 +28,7 @@ var folder = elems.folders.childNodes;
 	
 //FUNCTIONS
 InitFolders = function(){
+        
 	for(i=0; i<folder.length; i++){
 			folder[i].addEventListener('click', SelectFolder);
 			console.log(folder[i]);
@@ -36,15 +37,26 @@ InitFolders = function(){
 
 CreateFolder = function(){
 	f = document.createElement("div");
-	f.className = "folder folder"+folder.length;
-	f.innerHTML = '<img src="/img/icons/folder.png">Folder'+folder.length;
-	elems.folders.appendChild(f);
+	f_name = prompt("Enter folder name");
+	if(f_name!=""&&f_name!=null){
+		f.className = "folder folder_"+f_name;
+		f.innerHTML = '<img src="/img/icons/folder.png">'+f_name;
+		elems.folders.appendChild(f);
+	}
+	document.getElementById('fld_inp').value = f_name;
+        AddNewFolder();
+    //  ViewFolders();
 	InitFolders();
-	
 }
 
 RemoveFolder = function(){
 	elems.folders.removeChild(t);
+	window.t = null;
+	elems.help.style.display = "block";
+	setTimeout(function(){
+		elems.help.style.opacity=1;
+	},500);
+	InitFolders();
 }
 
 SelectFolder = function(){
@@ -58,6 +70,12 @@ SelectFolder = function(){
 	}
 	window.t = this;
 	this.style.background = color.light_indigo;
+}
+
+ContextMenu = function(){
+	if(t!=null){
+		console.log("yes");
+	}
 }
 
 Logout = function(){
@@ -74,11 +92,15 @@ Logout = function(){
 	//page load
 	setTimeout(function(){elems.dbody.style.opacity=1;},500);
 	InitFolders();
-	window.t = folder[1];
+	window.t = null;
 	
 	//settings&logout
 	elems.logout_menu_btn.onclick = function(){Logout();};
 	
+	//context
+	window.oncontextmenu = function(){ContextMenu();return false;};
+	
 	//	
 	console.log("script_loaded");
 }
+

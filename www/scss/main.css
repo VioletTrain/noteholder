@@ -83,3 +83,18 @@ body {
   top: 200px;
   left: 200px;
   transition: all 0.5s; }
+
+.context {
+  position: abdolute;
+  width: 100px;
+  height: 100px; }
+
+.folder_btn {
+  position: absolute;
+  left: 500px; }
+
+.create_folder {
+  top: 500px; }
+
+.remove_folder {
+  top: 550px; }

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-02 17:46:22
-  from "C:\OpenServer\domains\noteholder.local\views\index.tpl" */
+/* Smarty version 3.1.29, created on 2016-04-17 12:59:16
+  from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local1\views\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_56ffdb3e2ca8b3_67064111',
+  'unifunc' => 'content_57135e74617714_64582455',
   'file_dependency' => 
   array (
-    'd44ed3d26c7ffa79f4ca5612cf51a98c71c33aee' => 
+    '1ae9d978e6912660fd2b30292d6ac9413b7f2247' => 
     array (
-      0 => 'C:\\OpenServer\\domains\\noteholder.local\\views\\index.tpl',
-      1 => 1459608378,
+      0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local1\\views\\index.tpl',
+      1 => 1460562350,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_56ffdb3e2ca8b3_67064111 ($_smarty_tpl) {
+function content_57135e74617714_64582455 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -56,10 +56,6 @@ function content_56ffdb3e2ca8b3_67064111 ($_smarty_tpl) {
 	
 		<!--SLIDE1-->
 		<div class="slide slide1 active">
-			<!-- BUTTONS -->
-			<div class="nav_btn right_btn">
-			<img src="/img/right.png">
-			</div>
 			<!--CONTENT-->
 			<div class="text">
 				<h1>Welcome to NoteHolder!</h1>
@@ -71,18 +67,15 @@ function content_56ffdb3e2ca8b3_67064111 ($_smarty_tpl) {
 			<div class="pic">
 				<img src="/img/icons/icon1.png">
 			</div>
+			<!-- BUTTONS -->
+			<div class="nav_btn right_btn">
+				<img src="/img/right.png">
+			</div>
 			
 		</div>
 
 		<!--SLIDE2-->
 		<div class="slide slide2 passive">
-			<!-- BUTTONS -->
-			<div class="nav_btn left_btn">
-			<img src="/img/left.png">
-			</div>
-			<div class="nav_btn right_btn">
-			<img src="/img/right.png">
-			</div>
 			<!--CONTENT-->
 			<div class="text">
 				<h1>Use lots of usefull functions we present to you!</h1>
@@ -95,15 +88,18 @@ function content_56ffdb3e2ca8b3_67064111 ($_smarty_tpl) {
 			<div class="pic">
 				<img src="/img/icons/icon3.png">
 			</div>
+			<!-- BUTTONS -->
+			<div class="nav_btn left_btn">
+				<img src="/img/left.png">
+			</div>
+			<div class="nav_btn right_btn">
+				<img src="/img/right.png">
+			</div>
 			
 		</div>
 
 		<!--SLIDE3-->
 		<div class="slide slide3 passive">
-			<!-- BUTTONS -->
-			<div class="nav_btn left_btn">
-			<img src="/img/left.png">
-			</div>
 			<!--CONTENT-->
 			<div class="text">
 				<h1>Organize you minds simply!</h1>
@@ -116,21 +112,26 @@ function content_56ffdb3e2ca8b3_67064111 ($_smarty_tpl) {
 			<div class="pic">
 				<img src="/img/icons/icon7.png">
 			</div>
+			<!-- BUTTONS -->
+			<div class="nav_btn left_btn">
+				<img src="/img/left.png">
+			</div>
+			
 		</div>
 	
 <!--	FORMS-->
 	<div class="form reg_form">
-		<input class="field reg_email" type="email" placeholder="email" name="email">
-		<input class="field reg_pass" type="password" placeholder="password (no longer than 20 symbols)" name="pwd1" maxlength="20">
-		<input class="field reg_pass2" type="password" placeholder="retype password" name="pwd2" maxlength="20">
+		<div class="field_wrap"><input class="field reg_email" type="email" placeholder="email" name="email"><span class="underline"></span></div>
+		<div class="field_wrap"><input class="field reg_pass" type="password" placeholder="password (no longer than 20 symbols)" name="pwd1" maxlength="20"><span class="underline"></span></div>
+		<div class="field_wrap"> <input class="field reg_pass2" type="password" placeholder="retype password" name="pwd2" maxlength="20"><span class="underline"></span></div>
 		<div class="btn reg_btn">Register</div>
 		<div class="btn reg_cancel_btn">Cancel</div>
 	</div>
 	
 	<div class="form log_form">
-		<input class="field log_email" type="email" placeholder="email" name="email">
-		<input class="field log_pass" type="password" placeholder="password" name="pwd1">
-		<div class="show_pass_btn"></div>
+		<div class="field_wrap"><input class="field log_email" type="email" placeholder="email" name="email"><span class="underline"></span></div>
+		<div class="field_wrap"> <span class="show_pass_btn"><img src="/img/eye.svg"></span><input class="field log_pass" type="password" placeholder="password" name="pwd1" maxlength="20"><span class="underline"></span></div>
+		<!--<div class="show_pass_btn"></div>-->
 		<div class="btn log_btn">Login</div>
 		<div class="btn log_cancel_btn">Cancel</div>
 	</div>
