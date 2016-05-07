@@ -6,7 +6,7 @@
  */
 function GetData(obj_form){
     var hData = {};
-    $('input, textarea, select', obj_form).each(function(){
+    $('input, textarea, select, img', obj_form).each(function(){
         if(this.name && this.name!=''){
             hData[this.name] = this.value;
         }
@@ -31,25 +31,6 @@ AddNewFolder = function(){
             } else {
                 console.log('failed adding new folder');
                 console.log(data['name']);
-            }
-        }
- 
-    });
-}
-
-ViewFolders = function(){
-    var postData = GetData('.new_folder');
-    console.log(postData);
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=folder&action=vfolders",
-        data: postData,
-        dataType: 'json',
-        success: function(data){             
-            for(var i = 0; i < data.length; i++){
-                f.className = "folder folder_" + data[i]['name'];
-                f.innerHTML = '<img src="/img/icons/folder.png">' + data[i]['name'];
             }
         }
  

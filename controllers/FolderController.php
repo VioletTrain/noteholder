@@ -3,6 +3,7 @@
 include_once '../models/FoldersModel.php';
 
 /**
+ * Creating new folder
  * 
  */
 function cfolderAction(){

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-04-30 14:01:05
+/* Smarty version 3.1.29, created on 2016-05-07 09:39:10
   from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local\views\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5724907196ddb1_29176694',
+  'unifunc' => 'content_572d8d8e469a61_07954018',
   'file_dependency' => 
   array (
     'b9ec0d6fbc62acce50b41f678b0575e98c78188f' => 
     array (
       0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local\\views\\main.tpl',
-      1 => 1462014064,
+      1 => 1462603127,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5724907196ddb1_29176694 ($_smarty_tpl) {
+function content_572d8d8e469a61_07954018 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -51,7 +51,7 @@ function content_5724907196ddb1_29176694 ($_smarty_tpl) {
 	</div>
 <!--	FOLDERS-->
 	<div class="folders">
-                
+                <!--
 		<div class="folder folder1">
 			<img src="/img/icons/folder.png">
 			Folder 1
@@ -64,13 +64,13 @@ function content_5724907196ddb1_29176694 ($_smarty_tpl) {
 		<div class="folder folder3">
 			<img src="/img/icons/folder.png">
 			Folder 3
-		</div>
+		</div>-->
 	</div>
 <!--	FOLDER BTNS-->
 	<button class="folder_btn create_folder" onclick="CreateFolder();">CreateFolder();</button>
 	<button class="folder_btn remove_folder" onclick="RemoveFolder();">RemoveFolder();</button>
 <!--	PLEASE SELEC YOUR FOLDER-->
-    <div class="help">Please, select your folder</br> on the left side menu.</div>
+        <div class="help">Please, select your folder</br> on the left side menu.</div>
 <!--CONTEXT MENU-->
         <div class="new_folder">
             <input type="hidden" name="fld_inp" id="fld_inp" value="testing"></input>

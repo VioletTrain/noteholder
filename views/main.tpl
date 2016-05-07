@@ -22,7 +22,7 @@
 	</div>
 <!--	FOLDERS-->
 	<div class="folders">
-                
+                <!--
 		<div class="folder folder1">
 			<img src="/img/icons/folder.png">
 			Folder 1
@@ -35,7 +35,7 @@
 		<div class="folder folder3">
 			<img src="/img/icons/folder.png">
 			Folder 3
-		</div>
+		</div>-->
 	</div>
 <!--	FOLDER BTNS-->
 	<button class="folder_btn create_folder" onclick="CreateFolder();">CreateFolder();</button>

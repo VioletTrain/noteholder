@@ -3,7 +3,7 @@ session_start();
 
 include_once '../config/config.php';            // инициализация настроек
 include_once '../config/db.php';                // инициализация соединения с БД
-include_once '../library/mainFunctions.php';    // основные функции
+include_once '../library/MainFunctions/mainF.php';    // основные функции
 
 // определяем, с каким контроллером будем работать
 $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'Index';

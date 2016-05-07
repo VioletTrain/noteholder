@@ -29,24 +29,45 @@ var folder = elems.folders.childNodes;
 //FUNCTIONS
 InitFolders = function(){
         
-	for(i=0; i<folder.length; i++){
+	for(i=0; i < folder.length; i++){
 			folder[i].addEventListener('click', SelectFolder);
 			console.log(folder[i]);
 		}
 }
 
+ViewFolders = function(){
+    var postData = true;
+    
+    $.ajax({
+        type:'POST',
+        async: true,
+        url:"?controller=folder&action=vfolders",
+        data: postData,
+        dataType: 'json',
+        success: function(data){           
+            for(var i = 0; i < data.length; i++){
+                f = document.createElement("div");
+                f.className = "folder folder_" + data[i]['name'];
+                f.innerHTML = '<img src="/img/icons/folder.png">' + data[i]['name']+'</img>';
+                elems.folders.appendChild(f);
+            }
+            InitFolders();
+        }
+ 
+    });
+}
+
 CreateFolder = function(){
-	f = document.createElement("div");
-	f_name = prompt("Enter folder name");
-	if(f_name!=""&&f_name!=null){
-		f.className = "folder folder_"+f_name;
-		f.innerHTML = '<img src="/img/icons/folder.png">'+f_name;
-		elems.folders.appendChild(f);
-	}
-	document.getElementById('fld_inp').value = f_name;
-        AddNewFolder();
-    //  ViewFolders();
-	InitFolders();
+    f = document.createElement("div");
+    f_name = prompt("Enter folder name");
+    if(f_name!=""&&f_name!=null){
+            f.className = "folder folder_"+f_name;
+            f.innerHTML = '<img src="/img/icons/folder.png">'+f_name+'</img>';
+            elems.folders.appendChild(f);
+    }
+    document.getElementById('fld_inp').value = f_name;
+    AddNewFolder();
+    InitFolders();
 }
 
 RemoveFolder = function(){
@@ -70,6 +91,9 @@ SelectFolder = function(){
 	}
 	window.t = this;
 	this.style.background = color.light_indigo;
+       
+        var postData = GetData('.folders');
+        console.log(postData);
 }
 
 ContextMenu = function(){
@@ -91,8 +115,8 @@ Logout = function(){
 	//PAGE ACTIONS
 	//page load
 	setTimeout(function(){elems.dbody.style.opacity=1;},500);
-	InitFolders();
-	window.t = null;
+        ViewFolders();
+        window.t = null;
 	
 	//settings&logout
 	elems.logout_menu_btn.onclick = function(){Logout();};
