@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-05-07 09:39:10
+/* Smarty version 3.1.29, created on 2016-05-08 18:05:47
   from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local\views\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_572d8d8e469a61_07954018',
+  'unifunc' => 'content_572f55cb374154_26135647',
   'file_dependency' => 
   array (
     'b9ec0d6fbc62acce50b41f678b0575e98c78188f' => 
     array (
       0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local\\views\\main.tpl',
-      1 => 1462603127,
+      1 => 1462719945,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_572d8d8e469a61_07954018 ($_smarty_tpl) {
+function content_572f55cb374154_26135647 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -51,29 +51,17 @@ function content_572d8d8e469a61_07954018 ($_smarty_tpl) {
 	</div>
 <!--	FOLDERS-->
 	<div class="folders">
-                <!--
-		<div class="folder folder1">
-			<img src="/img/icons/folder.png">
-			Folder 1
-		</div>
-                
-		<div class="folder folder2">
-			<img src="/img/icons/folder.png">
-			Folder 2
-		</div>
-		<div class="folder folder3">
-			<img src="/img/icons/folder.png">
-			Folder 3
-		</div>-->
 	</div>
 <!--	FOLDER BTNS-->
 	<button class="folder_btn create_folder" onclick="CreateFolder();">CreateFolder();</button>
 	<button class="folder_btn remove_folder" onclick="RemoveFolder();">RemoveFolder();</button>
+        <button class="folder_btn create_note" onclick="CreateNote();">CreateNote();</button>
+	<button class="folder_btn remove_note" onclick="RemoveNote();">RemoveNote();</button>
 <!--	PLEASE SELEC YOUR FOLDER-->
         <div class="help">Please, select your folder</br> on the left side menu.</div>
 <!--CONTEXT MENU-->
         <div class="new_folder">
-            <input type="hidden" name="fld_inp" id="fld_inp" value="testing"></input>
+            <input type="hidden" name="folder_name" id="folder_name"></input>
         </div>
 	<div class="cotext"></div>
 	

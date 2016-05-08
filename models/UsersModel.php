@@ -49,12 +49,12 @@ function registerNewUser($email, $pwdMD5, $name){
  */
 function checkUserEmail($email){
     $email = mysql_real_escape_string($email);
-    $sql = "SELECT `id` FROM users WHERE `email` = '{$email}'";
+    /*$sql = "SELECT `id` FROM users WHERE `email` = '{$email}'";
           
     $rs = mysql_query($sql);
-    $rs = createSmartyRsArray($rs);
+    $rs = createSmartyRsArray($rs);*/
     
-    return $rs;
+    return query("SELECT `id` FROM users WHERE `email` = '{$email}'");
 }
 
 /**
@@ -68,10 +68,10 @@ function checkAuthoriseParams($email, $pwd1){
     $email  = htmlspecialchars(mysql_real_escape_string($email));
     $pwd1   = htmlspecialchars(mysql_real_escape_string($pwd1));
     
-    $sql = "SELECT `id` FROM users WHERE `email` = '{$email}' and `pwd` = '{$pwd1}'";
+    /*$sql = "SELECT `id` FROM users WHERE `email` = '{$email}' and `pwd` = '{$pwd1}'";
     
     $rs = mysql_query($sql);
-    $rs = createSmartyRsArray($rs);
+    $rs = createSmartyRsArray($rs);*/
     
-    return $rs;
+    return query("SELECT `id` FROM users WHERE `email` = '{$email}' and `pwd` = '{$pwd1}'");
 }

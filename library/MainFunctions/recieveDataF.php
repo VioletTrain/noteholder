@@ -6,7 +6,7 @@
  * @return type     new folder name
  */
 function getFolderName() {
-    $folderName = trim(filter_input(INPUT_POST, 'fld_inp'));
+    $folderName = trim(filter_input(INPUT_POST, "folder_name"));
     $folderName = htmlspecialchars(mysql_real_escape_string($folderName));
 
     return $folderName;
@@ -26,4 +26,8 @@ function requestParams() {
     $reqData['name']    = $reqData['email'];
     
     return $reqData;
+}
+
+function query($string){
+    return createSmartyRsArray(mysql_query($string));
 }

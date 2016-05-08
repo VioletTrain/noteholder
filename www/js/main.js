@@ -25,13 +25,13 @@ var elems = {
 	
 }
 var folder = elems.folders.childNodes;
-	
+var folderName;
 //FUNCTIONS
 InitFolders = function(){
         
 	for(i=0; i < folder.length; i++){
 			folder[i].addEventListener('click', SelectFolder);
-			console.log(folder[i]);
+			//console.log(folder[i]);
 		}
 }
 
@@ -65,7 +65,7 @@ CreateFolder = function(){
             f.innerHTML = '<img src="/img/icons/folder.png">'+f_name+'</img>';
             elems.folders.appendChild(f);
     }
-    document.getElementById('fld_inp').value = f_name;
+    document.getElementById('folder_name').value = f_name;
     AddNewFolder();
     InitFolders();
 }
@@ -77,6 +77,8 @@ RemoveFolder = function(){
 	setTimeout(function(){
 		elems.help.style.opacity=1;
 	},500);
+        
+        DeleteFolder();
 	InitFolders();
 }
 
@@ -91,9 +93,10 @@ SelectFolder = function(){
 	}
 	window.t = this;
 	this.style.background = color.light_indigo;
-       
-        var postData = GetData('.folders');
-        console.log(postData);
+        var postData = this.innerHTML;
+        folderName = postData.split("img src=\"/img/icons/folder.png\">");
+        document.getElementById('folder_name').value = folderName[1];
+        
 }
 
 ContextMenu = function(){

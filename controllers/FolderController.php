@@ -15,15 +15,28 @@ function cfolderAction(){
         $res = addNewFolder($user_id, $folderName);
     } else {
     	$res['success'] = 0;
-        if(! $folderName){
-            $folderName = "test";
-        }
-        $res['name'] = $folderName;
     }
 
     echo json_encode($res);
 }
 
+function rfolderAction(){
+    $res = null;
+    $folderName = getFolderName();
+    
+    if($folderName){
+        $user_id = getCurrentUser();
+        $res = removeFolder($user_id, $folderName);
+    } else {
+        $res['success'] = 0;
+    }
+    
+    echo json_encode($res);
+}
+/**
+ * View all current user`s folders
+ * 
+ */
 function vfoldersAction(){
     $user_id = getCurrentUser();
     

@@ -94,7 +94,13 @@ body {
   left: 500px; }
 
 .create_folder {
-  top: 500px; }
+  top: 400px; }
 
 .remove_folder {
+  top: 450px; }
+
+.create_note {
+  top: 500px; }
+
+.remove_note {
   top: 550px; }

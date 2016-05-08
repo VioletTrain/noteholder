@@ -18,7 +18,7 @@ function GetData(obj_form){
 //  отправка POST-данных( имя папки ) для добавления новой папки 
 AddNewFolder = function(){
     var postData = GetData('.new_folder');
-    console.log(postData);
+
     $.ajax({
         type:'POST',
         async: true,
@@ -37,6 +37,25 @@ AddNewFolder = function(){
     });
 }
 
+function DeleteFolder(){
+    var postData = GetData('.new_folder');
+    console.log(postData);
+    $.ajax({
+        type:'POST',
+        async: true,
+        url:"?controller=folder&action=rfolder",
+        data: postData,
+        dataType: 'json',
+        success: function(data){             
+            if(data['success']){
+                console.log('success deleting folder');
+            } else {
+                console.log('failed deleting folder');
+            }
+        }
+ 
+    });
+}
 //  отправка POST-данных для выхода из учетной записи
 LoggingOut = function(){
     var postData = true;
