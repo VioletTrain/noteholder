@@ -8,7 +8,7 @@ include_once '../models/FoldersModel.php';
  */
 function cfolderAction(){
     $res = null;
-    $folderName = getFolderName();
+    $folderName = getItemName();
     
     if($folderName){
         $user_id = getCurrentUser();
@@ -22,7 +22,7 @@ function cfolderAction(){
 
 function rfolderAction(){
     $res = null;
-    $folderName = getFolderName();
+    $folderName = getItemName();
     
     if($folderName){
         $user_id = getCurrentUser();

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-05-08 18:05:47
+/* Smarty version 3.1.29, created on 2016-05-19 21:20:29
   from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local\views\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_572f55cb374154_26135647',
+  'unifunc' => 'content_573e03eda6a998_69240562',
   'file_dependency' => 
   array (
     'b9ec0d6fbc62acce50b41f678b0575e98c78188f' => 
     array (
       0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local\\views\\main.tpl',
-      1 => 1462719945,
+      1 => 1463681802,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_572f55cb374154_26135647 ($_smarty_tpl) {
+function content_573e03eda6a998_69240562 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -50,19 +50,23 @@ function content_572f55cb374154_26135647 ($_smarty_tpl) {
 		<div class="btn logout_menu_btn">Logout</div>
 	</div>
 <!--	FOLDERS-->
-	<div class="folders">
+	<div class="folders"></div>
+<!--	NOTES-->
+	<div class="notes"></div>
+	<div class="back"></div>
+<!--	PLEASE SELECT YOUR FOLDER-->
+    <div class="help">Please, select your folder</br> on the left side menu.</div>
+<!--	ACTION BTNS-->
+	<div class="buttons">
+    	<button class="action_btn create_note">Create Note</button>
+        <button class="action_btn remove_note">Remove Note</button>
+	<button class="action_btn create_folder">Create Folder</button>
+	<button class="action_btn remove_folder">Remove Folder</button>
 	</div>
-<!--	FOLDER BTNS-->
-	<button class="folder_btn create_folder" onclick="CreateFolder();">CreateFolder();</button>
-	<button class="folder_btn remove_folder" onclick="RemoveFolder();">RemoveFolder();</button>
-        <button class="folder_btn create_note" onclick="CreateNote();">CreateNote();</button>
-	<button class="folder_btn remove_note" onclick="RemoveNote();">RemoveNote();</button>
-<!--	PLEASE SELEC YOUR FOLDER-->
-        <div class="help">Please, select your folder</br> on the left side menu.</div>
 <!--CONTEXT MENU-->
-        <div class="new_folder">
-            <input type="hidden" name="folder_name" id="folder_name"></input>
-        </div>
+    <div class="itemName">
+        <input type="hidden" name="item_name" id="item_name"></input>
+    </div>
 	<div class="cotext"></div>
 	
 	

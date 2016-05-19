@@ -17,7 +17,7 @@ function GetData(obj_form){
 
 //  отправка POST-данных( имя папки ) для добавления новой папки 
 AddNewFolder = function(){
-    var postData = GetData('.new_folder');
+    var postData = GetData('.itemName');
 
     $.ajax({
         type:'POST',
@@ -37,8 +37,8 @@ AddNewFolder = function(){
     });
 }
 
-function DeleteFolder(){
-    var postData = GetData('.new_folder');
+DeleteFolder = function(){
+    var postData = GetData('.itemName');
     console.log(postData);
     $.ajax({
         type:'POST',
@@ -54,6 +54,21 @@ function DeleteFolder(){
             }
         }
  
+    });
+}
+
+AddNewNote = function(){
+    var postData = GetData('.itemName');
+    
+    $.ajax({
+        type:'POST',
+        async: true,
+        url:"?controller=note&action=cnote",
+        data: postData,
+        dataType: 'json',
+        success: function(data){             
+            console.log(data);
+        }
     });
 }
 //  отправка POST-данных для выхода из учетной записи

@@ -83,16 +83,18 @@ body{
 //FOLDERS
 .folders{
 	position: fixed;
+	z-index: 1;
 	width: 100px;
-	height: 100%;
 	top: 80px;
+	bottom: 80px;
 	left: 0;
 	box-shadow: 0 0 15px lightgray;
 	transition: $anim;
+	overflow-y: scroll;
 }
 
 .folder{
-	width: 60px;
+	width: 48px;
 	margin: 10px;
 	padding: 10px;
 	border-radius: 5px;
@@ -108,6 +110,48 @@ body{
 		}
 	}
 }
+
+//BUTTONS
+.buttons{
+	position: fixed;
+	z-index: 2;
+	bottom: 0;
+	left: 0;
+	background: $white;
+	width: 100%;
+	height: 80px;
+	box-shadow: 0 0 25px lightgray;
+	transition: $anim;
+}
+
+.action_btn{
+	position: absolute;
+	top: 10px;
+	height: 60px;
+	border: none;
+	background: $white;
+	font-weight: bolder;
+	font-size: 1em;
+	cursor: pointer;
+	text-align: center;
+	border-radius: 5px;
+	transition: $anim;
+	color: $orange;
+	&:hover{background: $light_indigo;}
+}
+.create_note{
+	left: 100px;
+}
+.remove_note{
+	left: 300px;
+}
+.create_folder{
+	right: 100px;
+}
+.remove_folder{
+	right: 300px;
+}
+
 
 //HELP
 .help{
@@ -125,16 +169,3 @@ body{
 	height: 100px;
 	
 }
-
-//FOLDERBTN
-.folder_btn{
-	position: absolute;
-	left: 500px;
-}
-.create_folder{
-	top: 500px;
-}
-.remove_folder{
-	top: 550px;
-}
-
