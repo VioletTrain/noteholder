@@ -81,12 +81,12 @@ ViewNotes = function(){
                     n = document.createElement("div");
                     n.className = "note note_"+data[i]['name']+" "+t.className.substring(7);
                     n.innerHTML = "<h1>"+data[i]['name']+"</h1><textarea></textarea>";
-                    elems.folders.appendChild(n); 
+                    elems.notes.appendChild(n); 
                 }
             }
         InitNotes();
         }
-        
+    
  
     });
 }
