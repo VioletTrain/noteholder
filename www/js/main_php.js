@@ -15,77 +15,69 @@ function GetData(obj_form){
     return hData;
 }
 
+AjaxFunc = function(fields, ca, func){
+    var postData = GetData(fields);
+
+    $.ajax({
+        type:'POST',
+        async: true,
+        url: ca,
+        data: postData,
+        dataType: 'json',
+        success: function(data){ 
+            if(func == 1){
+                console.log(data);
+            } else {
+                func(data);
+            }
+        }
+    });
+};
+
 //  отправка POST-данных( имя папки ) для добавления новой папки 
 AddNewFolder = function(){
-    var postData = GetData('.itemName');
+    AjaxFunc(".itemName", "?controller=folder&action=cfolder", 1);
+};
 
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=folder&action=cfolder",
-        data: postData,
-        dataType: 'json',
-        success: function(data){             
-            if(data['success']){
-                console.log('success adding new folder');
-            } else {
-                console.log('failed adding new folder');
-                console.log(data['name']);
-            }
-        }
- 
-    });
-}
-
-DeleteFolder = function(){
-    var postData = GetData('.itemName');
-    console.log(postData);
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=folder&action=rfolder",
-        data: postData,
-        dataType: 'json',
-        success: function(data){             
-            if(data['success']){
-                console.log('success deleting folder');
-            } else {
-                console.log('failed deleting folder');
-            }
-        }
- 
-    });
-}
+DeleteFolder = function(){   
+    AjaxFunc(".itemName", "?controller=folder&action=rfolder", 1);
+};
 
 AddNewNote = function(){
-    var postData = GetData('.itemName');
-    
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=note&action=cnote",
-        data: postData,
-        dataType: 'json',
-        success: function(data){             
-            console.log(data);
-        }
-    });
-}
+    AjaxFunc(".itemName", "?controller=note&action=cnote", 1);
+};
+
+DeleteNote = function(){    
+    AjaxFunc(".itemName", "?controller=note&action=rnote", 1);
+};
+
 //  отправка POST-данных для выхода из учетной записи
 LoggingOut = function(){
-    var postData = true;
+    func = function(data){
+        console.log("success");
+        setTimeout(function(){
+                    window.location.href = "/";
+		}, 500);
+    }
     
+    AjaxFunc(true, "?controller=user&action=logout", func);
+};
+
+AddContent = function(){
+    var postData = GetData(".itemName");
     $.ajax({
         type:'POST',
         async: true,
-        url:"?controller=user&action=logout",
+        url:"?controller=note&action=ccontent",
         data: postData,
         dataType: 'json',
         success: function(data){             
-        	setTimeout(function(){
-                    window.location.href = "/";
-		}, 500);
+           // console.log(data);
+            /*if(data['success']){
+                console.log('success deleting note');
+            } else {
+                console.log('failed deleting note');
+            }*/
         }
- 
     });
-}
+};

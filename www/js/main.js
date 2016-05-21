@@ -34,7 +34,7 @@ var folder = elems.folders.childNodes;
 var folderName;
 
 var note = elems.notes.childNodes;
-
+var noteName;
 //FUNCTIONS
 InitFolders = function(){
         
@@ -44,53 +44,35 @@ InitFolders = function(){
 }
 
 ViewFolders = function(){
-    var postData = true;
-    
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=folder&action=vfolders",
-        data: postData,
-        dataType: 'json',
-        success: function(data){           
-            for(var i = 0; i < data.length; i++){
+    func = function(data){
+        for(var i = 0; i < data.length; i++){
                 f = document.createElement("div");
                 f.className = "folder folder_" + data[i]['name'];
                 f.innerHTML = '<img src="/img/icons/folder.png">' + data[i]['name']+'</img>';
                 elems.folders.appendChild(f);
             }
             InitFolders();
-        }
- 
-    });
+    }
+    
+    AjaxFunc(true, "?controller=folder&action=vfolders", func);
 }
 
 ViewNotes = function(){
-    var postData = GetData('.itemName');
-    
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=note&action=vnotes",
-        data: postData,
-        dataType: 'json',
-        success: function(data){  
-            if(!document.querySelector('.note')){
-                for(var i = 0; i < data.length; i++){
-                    console.log(data[i]['name']);
-                    n = document.createElement("div");
-                    n.className = "note note_"+data[i]['name']+" "+t.className.substring(7);
-                    n.innerHTML = "<h1>"+data[i]['name']+"</h1><textarea></textarea>";
-                    elems.notes.appendChild(n); 
-                }
+    func = function(data){
+        for(var i = 0; i < data.length; i++){             
+                n = document.createElement("div");
+                n.className = "note note_"+data[i]['name']+" "+t.className.substring(7);
+                n.innerHTML = "<h1>"+data[i]['name']+"</h1><textarea name='"+data[i]['name']+"' \n\
+                onblur='AddContent()'></textarea>";
+                elems.notes.appendChild(n); 
             }
-        InitNotes();
-        }
+        DeselectNote();
+	InitNotes();
+    }
     
- 
-    });
+    AjaxFunc(".itemName", "?controller=note&action=vnotes", func);
 }
-
+//<div style="display: block;" class="note note_note1 folder_fld1"><h1>note1</h1><textarea></textarea>
 //FOLDERS
 CreateFolder = function(){
     f = document.createElement("div");
@@ -195,6 +177,7 @@ CreateNote = function(){
 RemoveNote = function(){
 	elems.notes.removeChild(tn);
 	window.tn=null;
+        DeleteNote();
 	InitNotes();
 }
 
@@ -202,6 +185,12 @@ SelectNote = function(){
 	if(tn!=null){tn.style.transform="scale(1,1)";}
 	window.tn = this;
 	tn.style.transform="scale(1.1,1.1)";
+        
+        var postData = this.innerHTML;
+        noteName = postData.split("<h1>");
+        noteName = noteName[1].split("</h1><textarea");
+        var note_arr = [ folderName[1], noteName[0] ];
+        document.getElementById('item_name').value = note_arr;
 }
 
 DeselectNote = function(){
@@ -230,7 +219,7 @@ Logout = function(){
         ViewFolders();
 	InitNotes();
         window.t = null;
-		window.tn = null;
+	window.tn = null;
 	
 	//settings&logout
 	elems.logout_menu_btn.onclick = function(){Logout();};

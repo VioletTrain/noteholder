@@ -12,6 +12,13 @@ function getItemName() {
     return $itemName;
 }
 
+function getContent($noteName){
+    $content = trim(filter_input(INPUT_POST, $noteName));
+    $content = htmlspecialchars(mysql_real_escape_string($content));
+    
+    return $content;
+}
+
 /**
  * Получение входных данных
  * 

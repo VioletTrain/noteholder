@@ -63,3 +63,20 @@ function createSmartyRsArray($rs){
     return $smartyRs;   
 }
 
+function notesFunc($funcName){
+    $res = null;
+    
+    $noteName = getItemName();
+    $noteName = explode(",", $noteName);
+    
+    if($noteName){
+        $user_id = getCurrentUser();
+        $folder_id = getSelectedFolder($user_id);
+        
+        $res = $funcName($noteName[1], $user_id, $folder_id);
+    } else {
+        $res['success'] = 0;
+    }
+   
+    echo json_encode($res);
+}
