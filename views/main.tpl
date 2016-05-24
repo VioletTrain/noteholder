@@ -26,7 +26,7 @@
 	<div class="notes"></div>
 	<div class="back"></div>
 <!--	PLEASE SELECT YOUR FOLDER-->
-    <div class="help">Please, select your folder</br> on the left side menu.</div>
+<!--    <div class="help">Please, select your folder</br> on the left side menu.</div> -->
 <!--	ACTION BTNS-->
 	<div class="buttons">
     	<button class="action_btn create_note">Create Note</button>

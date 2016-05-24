@@ -5,12 +5,39 @@ include_once '../models/NotesModel.php';
 
 //  Creating note
 function cnoteAction(){
-    notesFunc("addNewNote");
+    $res = null;
+    
+    $noteName = getItemName();
+    $noteName = explode(",", $noteName);
+    
+    if($noteName){
+        $user_id = getCurrentUser();
+        $folder_id = getSelectedFolder($user_id);
+        $res = addNewNote($noteName[1], $user_id, $folder_id, $noteName[0]);
+    } else {
+        $res['success'] = 0;
+    }
+   
+    echo json_encode($res);
 }
 
 //  Removing note
 function rnoteAction(){
-    notesFunc("removeNote");
+    $res = null;
+    
+    $noteName = getItemName();
+    $noteName = explode(",", $noteName);
+    
+    if($noteName){
+        $user_id = getCurrentUser();
+        $folder_id = getSelectedFolder($user_id);
+        
+        $res = removeNote($noteName[1], $user_id, $folder_id);
+    } else {
+        $res['success'] = 0;
+    }
+   
+    echo json_encode($res);
 }
 
 function ccontentAction(){
@@ -22,23 +49,18 @@ function ccontentAction(){
     if($noteName){
         $user_id = getCurrentUser();
         $folder_id = getSelectedFolder($user_id);
-        
         $note_id = getSelectedNote($noteName[1], $user_id, $folder_id);
-        /*if($note_id){
-            $content = getContent($noteName);
-            $res = addNoteContent($note_id, $content);
-        }*/
+        $res = addNoteContent($note_id, $noteName[2]);
     } else {
         $res['success'] = 0;
     }
     
-    echo json_encode($folder_id);
+    echo json_encode($noteName[0]);
 }
 
 // View current folder notes
 function vnotesAction(){
     $user_id = getCurrentUser();
-    $folder_id = getSelectedFolder($user_id);
     
-    echo json_encode(currentFolderNotes($user_id, $folder_id));
+    echo json_encode(currentUserNotes($user_id));
 }

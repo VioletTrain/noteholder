@@ -51,6 +51,10 @@ DeleteNote = function(){
     AjaxFunc(".itemName", "?controller=note&action=rnote", 1);
 };
 
+AddContent = function(){    
+    AjaxFunc(".itemName", "?controller=note&action=ccontent", 1);
+};
+
 //  отправка POST-данных для выхода из учетной записи
 LoggingOut = function(){
     func = function(data){
@@ -63,21 +67,3 @@ LoggingOut = function(){
     AjaxFunc(true, "?controller=user&action=logout", func);
 };
 
-AddContent = function(){
-    var postData = GetData(".itemName");
-    $.ajax({
-        type:'POST',
-        async: true,
-        url:"?controller=note&action=ccontent",
-        data: postData,
-        dataType: 'json',
-        success: function(data){             
-           // console.log(data);
-            /*if(data['success']){
-                console.log('success deleting note');
-            } else {
-                console.log('failed deleting note');
-            }*/
-        }
-    });
-};

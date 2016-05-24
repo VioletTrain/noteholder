@@ -47,6 +47,7 @@ ViewFolders = function(){
     func = function(data){
         for(var i = 0; i < data.length; i++){
                 f = document.createElement("div");
+                f.id = data[i]['name'];
                 f.className = "folder folder_" + data[i]['name'];
                 f.innerHTML = '<img src="/img/icons/folder.png">' + data[i]['name']+'</img>';
                 elems.folders.appendChild(f);
@@ -61,18 +62,33 @@ ViewNotes = function(){
     func = function(data){
         for(var i = 0; i < data.length; i++){             
                 n = document.createElement("div");
-                n.className = "note note_"+data[i]['name']+" "+t.className.substring(7);
+                n.id = data[i]['folder_name'] +","+data[i]['name'];
+                n.className = "note note_"+data[i]['name']+" "+"folder_"+data[i]['folder_name'];
                 n.innerHTML = "<h1>"+data[i]['name']+"</h1><textarea name='"+data[i]['name']+"' \n\
-                onblur='AddContent()'></textarea>";
+                onblur='GiveContent()'>"+data[i]['content']+"</textarea>";
                 elems.notes.appendChild(n); 
             }
         DeselectNote();
-	InitNotes();
+	for(var i = 0; i < note.length; i++){
+            note[i].addEventListener('click', SelectNote);
+            note[i].style.display = "block";
+        }
     }
     
     AjaxFunc(".itemName", "?controller=note&action=vnotes", func);
 }
-//<div style="display: block;" class="note note_note1 folder_fld1"><h1>note1</h1><textarea></textarea>
+
+GiveContent = function(){    
+    var test = $("textarea").serializeArray();
+    for(var i = 0; i < test.length; i++){
+        if(test[i].name.indexOf(noteName) != -1){
+            document.getElementById("item_name").value +="," + test[i].value;
+        } 
+    }
+    
+    AddContent();
+}
+
 //FOLDERS
 CreateFolder = function(){
     f = document.createElement("div");
@@ -116,9 +132,9 @@ RemoveFolder = function(){
 }
 
 SelectFolder = function(){
-	elems.help.style.opacity = 0;
+	//elems.help.style.opacity = 0;
 	setTimeout(function(){
-		elems.help.style.display="none";
+		//elems.help.style.display="none";
 	},500);
 	
 	if(t!=undefined){
@@ -126,11 +142,9 @@ SelectFolder = function(){
 	}
 	window.t = this;
 	this.style.background = color.light_indigo;
-        var postData = this.innerHTML;
-        folderName = postData.split("img src=\"/img/icons/folder.png\">");
-        document.getElementById('item_name').value = folderName[1];
-        ViewNotes();
-	DeselectNote();
+        folderName = this.id;
+        document.getElementById('item_name').value = this.id;
+        DeselectNote();
 	InitNotes();
         
 }
@@ -154,24 +168,30 @@ CreateNote = function(){
 	if(t!=undefined){
 		n = document.createElement("div");
 		n_name = prompt("Please enter note name!");
-                var note_arr = [
-                     folderName[1], n_name                    
-                ]
-		document.getElementById('item_name').value = note_arr;
-		
+                
+                
         if(n_name==""){alert("Please, enter note name!");}
 		else if(n_name.length>20){alert("Note name is too long!");}
+                else if(document.getElementById(n_name)){alert("This note already exists");}
 		else if(n_name!=null){
+                        n.id = n_name;
 			n.className = "note note_"+n_name+" "+t.className.substring(7);
-			n.innerHTML = "<h1>"+n_name+"</h1><textarea></textarea>";
+			n.innerHTML = "<h1>"+n_name+"</h1><textarea name='"+n_name+"' \n\
+                        onblur=GiveContent()></textarea>";
 			elems.notes.appendChild(n);
+                        var note_arr = [
+                         folderName, n_name                    
+                        ]
+                        document.getElementById('item_name').value = note_arr;
+                        AddNewNote();
+                        DeselectNote();
+                        InitNotes();
 		}
 	}else{
 		alert("Please select folder!");
 	}
-        AddNewNote();
-	DeselectNote();
-	InitNotes();
+        
+	
 }
 
 RemoveNote = function(){
@@ -185,12 +205,11 @@ SelectNote = function(){
 	if(tn!=null){tn.style.transform="scale(1,1)";}
 	window.tn = this;
 	tn.style.transform="scale(1.1,1.1)";
+        noteName = this.id.split(",");
+        noteName = noteName[1];
+        var note_str = this.id;
         
-        var postData = this.innerHTML;
-        noteName = postData.split("<h1>");
-        noteName = noteName[1].split("</h1><textarea");
-        var note_arr = [ folderName[1], noteName[0] ];
-        document.getElementById('item_name').value = note_arr;
+        document.getElementById('item_name').value = note_str;
 }
 
 DeselectNote = function(){
@@ -217,7 +236,8 @@ Logout = function(){
 	//page load
 	setTimeout(function(){elems.dbody.style.opacity=1;},500);
         ViewFolders();
-	InitNotes();
+        ViewNotes();
+	//InitNotes();
         window.t = null;
 	window.tn = null;
 	
