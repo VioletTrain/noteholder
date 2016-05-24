@@ -39,7 +39,7 @@ AddNewFolder = function(){
     AjaxFunc(".itemName", "?controller=folder&action=cfolder", 1);
 };
 
-DeleteFolder = function(){   
+DeleteFolder = function(){  
     AjaxFunc(".itemName", "?controller=folder&action=rfolder", 1);
 };
 

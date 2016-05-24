@@ -24,11 +24,12 @@ function addNewFolder($user_id, $folderName){
     return $rs;
 }
 
-function removeFolder($user_id, $folderName){
+function removeFolder($user_id, $folderName, $folder_id){
     $user_id    = htmlspecialchars(mysql_real_escape_string($user_id));
     $folderName = htmlspecialchars(mysql_real_escape_string($folderName));
     
     $rs = mysql_query("DELETE FROM `folders` WHERE `user_id` = '{$user_id}' and `name` = '{$folderName}'");
+    $rs = mysql_query("DELETE FROM `notes` WHERE `folder_id` = '{$folder_id}'");
     
     if($rs){        
         $rs = query("SELECT * FROM `folders` WHERE `user_id` = '{$user_id}' and `name` = '{$folderName}' LIMIT 1");
@@ -57,6 +58,10 @@ function getCurrentUser(){
 
 function currentUserFolders($user_id){
     return query("SELECT `name` FROM folders WHERE `user_id` = '{$user_id}'");
+}
+
+function getFolderNotes(){
+    
 }
 
 

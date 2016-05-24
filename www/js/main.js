@@ -107,7 +107,8 @@ CreateFolder = function(){
 	if(f_name==""){alert("Please, enter folder name!");}
 	else if(f_name.length>7){alert("Folder name is too long!");}
 	else if(f_name!=null){
-			f.className = "folder folder_"+f_name;
+            f.id = f_name;
+            f.className = "folder folder_"+f_name;
             f.innerHTML = '<img src="/img/icons/folder.png">'+f_name+'</img>';
             elems.folders.appendChild(f);
 		document.getElementById('item_name').value = f_name;
@@ -120,11 +121,7 @@ CreateFolder = function(){
 RemoveFolder = function(){
 	elems.folders.removeChild(t);
 	window.t = null;
-	elems.help.style.display = "block";
-	setTimeout(function(){
-		elems.help.style.opacity=1;
-	},500);
-        
+	        
         DeleteFolder();
 	InitFolders();
 	DeselectNote();
@@ -144,6 +141,7 @@ SelectFolder = function(){
 	this.style.background = color.light_indigo;
         folderName = this.id;
         document.getElementById('item_name').value = this.id;
+        
         DeselectNote();
 	InitNotes();
         
@@ -174,7 +172,7 @@ CreateNote = function(){
 		else if(n_name.length>20){alert("Note name is too long!");}
                 else if(document.getElementById(n_name)){alert("This note already exists");}
 		else if(n_name!=null){
-                        n.id = n_name;
+                        n.id = folderName+","+n_name;
 			n.className = "note note_"+n_name+" "+t.className.substring(7);
 			n.innerHTML = "<h1>"+n_name+"</h1><textarea name='"+n_name+"' \n\
                         onblur=GiveContent()></textarea>";

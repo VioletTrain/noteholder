@@ -1,6 +1,7 @@
 <?php
 
 include_once '../models/FoldersModel.php';
+include_once '../models/NotesModel.php';
 
 /**
  * Creating new folder
@@ -26,7 +27,8 @@ function rfolderAction(){
     
     if($folderName){
         $user_id = getCurrentUser();
-        $res = removeFolder($user_id, $folderName);
+        $folder_id = getSelectedFolder($user_id); 
+        $res = removeFolder($user_id, $folderName, $folder_id);
     } else {
         $res['success'] = 0;
     }
