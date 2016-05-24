@@ -196,7 +196,6 @@ RemoveNote = function(){
 	elems.notes.removeChild(tn);
 	window.tn=null;
         DeleteNote();
-	InitNotes();
 }
 
 SelectNote = function(){
