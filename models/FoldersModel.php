@@ -60,8 +60,5 @@ function currentUserFolders($user_id){
     return query("SELECT `name` FROM folders WHERE `user_id` = '{$user_id}'");
 }
 
-function getFolderNotes(){
-    
-}
 
 

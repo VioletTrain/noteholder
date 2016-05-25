@@ -55,7 +55,7 @@ function ccontentAction(){
         $res['success'] = 0;
     }
     
-    echo json_encode($noteName[0]);
+    echo json_encode($res);
 }
 
 // View current folder notes

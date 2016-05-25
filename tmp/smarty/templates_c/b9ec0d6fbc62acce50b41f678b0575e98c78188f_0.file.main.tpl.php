@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-05-24 18:38:43
+/* Smarty version 3.1.29, created on 2016-05-24 22:33:56
   from "D:\Stuff\SomeSoft\OpenServer\domains\noteholder.local\views\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_57447583629e80_35262917',
+  'unifunc' => 'content_5744aca460ced2_26230768',
   'file_dependency' => 
   array (
     'b9ec0d6fbc62acce50b41f678b0575e98c78188f' => 
     array (
       0 => 'D:\\Stuff\\SomeSoft\\OpenServer\\domains\\noteholder.local\\views\\main.tpl',
-      1 => 1464104319,
+      1 => 1464118433,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_57447583629e80_35262917 ($_smarty_tpl) {
+function content_5744aca460ced2_26230768 ($_smarty_tpl) {
 ?>
 <!DOCTYPE HTML>
 
@@ -55,7 +55,7 @@ function content_57447583629e80_35262917 ($_smarty_tpl) {
 	<div class="notes"></div>
 	<div class="back"></div>
 <!--	PLEASE SELECT YOUR FOLDER-->
-<!--    <div class="help">Please, select your folder</br> on the left side menu.</div> -->
+    <div class="help">Please, select your folder</br> on the left side menu.</div> 
 <!--	ACTION BTNS-->
 	<div class="buttons">
     	<button class="action_btn create_note">Create Note</button>
