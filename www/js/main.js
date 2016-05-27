@@ -82,7 +82,7 @@ GiveContent = function(){
     var test = $("textarea").serializeArray();
     for(var i = 0; i < test.length; i++){
         if(test[i].name.indexOf(noteName) != -1){
-            document.getElementById("item_name").value +="," + test[i].value;
+            document.getElementById("item_name").value +="&nbsp" + test[i].value;
         } 
     }
   
@@ -105,7 +105,7 @@ CreateFolder = function(){
 		}
 	
 	if(f_name==""){alert("Please, enter folder name!");}
-	else if(f_name.length>7){alert("Folder name is too long!");}
+	else if(f_name.length>50){alert("Folder name too long!");}
 	else if(f_name!=null){
             f.id = f_name;
             f.className = "folder folder_"+f_name;
@@ -120,6 +120,7 @@ CreateFolder = function(){
 
 RemoveFolder = function(){
 	elems.folders.removeChild(t);
+        //elems.notes.removeChild(tn);
 	window.t = null;
 	elems.help.style.display = "block";
 	setTimeout(function(){
@@ -180,10 +181,8 @@ CreateNote = function(){
 			n.innerHTML = "<h1>"+n_name+"</h1><textarea name='"+n_name+"' \n\
                         onblur=GiveContent()></textarea>";
 			elems.notes.appendChild(n);
-                        var note_arr = [
-                         folderName, n_name                    
-                        ]
-                        document.getElementById('item_name').value = note_arr;
+                        var note_str = folderName + "&nbsp" + n_name;
+                        document.getElementById('item_name').value = note_str;
                         AddNewNote();
                         DeselectNote();
                         InitNotes();
@@ -206,7 +205,7 @@ SelectNote = function(){
 	window.tn = this;
 	tn.style.transform="scale(1.1,1.1)";
         noteName = this.id;
-        var note_str = folderName + "," + this.id;
+        var note_str = folderName + "&nbsp" + this.id;
         
         document.getElementById('item_name').value = note_str;
 }

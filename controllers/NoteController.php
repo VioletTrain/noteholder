@@ -8,7 +8,7 @@ function cnoteAction(){
     $res = null;
     
     $noteName = getItemName();
-    $noteName = explode(",", $noteName);
+    $noteName = explode("&amp;nbsp", $noteName);
     
     if($noteName){
         $user_id = getCurrentUser();
@@ -26,7 +26,7 @@ function rnoteAction(){
     $res = null;
     
     $noteName = getItemName();
-    $noteName = explode(",", $noteName);
+    $noteName = explode("&amp;nbsp", $noteName);
     
     if($noteName){
         $user_id = getCurrentUser();
@@ -44,7 +44,7 @@ function ccontentAction(){
     $res = null;
     
     $noteName = getItemName();
-    $noteName = explode(",", $noteName);
+    $noteName = explode("&amp;nbsp", $noteName);
     
     if($noteName){
         $user_id = getCurrentUser();

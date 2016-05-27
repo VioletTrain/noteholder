@@ -53,7 +53,7 @@ function currentUserNotes($user_id){
 
 function getSelectedFolder($user_id){
     $fname = getItemName();
-    $fname = explode(",", $fname);
+    $fname = explode("&amp;nbsp", $fname);
     $rs = mysql_query("SELECT `id` FROM `folders` WHERE `user_id` = '{$user_id}' 
                        and `name` = '{$fname[0]}' LIMIT 1");
     $rs = mysql_fetch_assoc($rs);
